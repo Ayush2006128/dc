@@ -1,0 +1,9 @@
+[package]
+name = "dc"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+html5ever = "0.36.1"
+markup5ever_rcdom = "0.3.0"
+tendril = "0.4.3"
