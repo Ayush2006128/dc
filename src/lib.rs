@@ -9,7 +9,7 @@ use html5ever::tendril::TendrilSink;
 // premade dom structure types
 use markup5ever_rcdom::{NodeData, RcDom, Handle};
 
-fn walk(handle: &Handle, indent: usize){
+pub fn walk(handle: &Handle, indent: usize){
     let indent_str = " ".repeat(indent);
 
     // node
@@ -47,8 +47,20 @@ fn walk(handle: &Handle, indent: usize){
     }
 }
 
-fn get_parser() {
-    todo!("implement it later");
+pub fn parse_html(html_input: String) -> RcDom {
+    // 2. Initialize the DOM (RcDom)
+    // We start with a default empty DOM structure
+    let dom_skeleton = RcDom::default();
+
+    // 3. Run the Parser
+    // parse_document takes the skeleton and options
+    // .from_utf8() tells it we are sending string data
+    // .read_from() actually does the work
+    let dom = parse_document(dom_skeleton, ParseOpts::default())
+        .from_utf8()
+        .read_from(&mut html_input.as_bytes())
+        .unwrap(); // Unwrap allows us to crash if parsing totally fails
+    dom
 }
 
 
