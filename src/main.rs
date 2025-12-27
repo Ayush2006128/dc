@@ -1,5 +1,4 @@
-mod css_logic;
-use dc::{parse_html, walk};
+use dc::{css_logic, parse_html, walk};
 
 fn main() {
     println!("Showing html ");
